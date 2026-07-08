@@ -1,0 +1,27 @@
+# Diretórios de build (MCUXpresso / Eclipse CDT)
+Debug/
+Release/
+
+# Objetos e dependências do compilador
+*.o
+*.obj
+*.d
+*.su
+
+# Saída do linker
+*.elf
+*.axf
+*.out
+*.map
+
+# Imagens de firmware
+*.bin
+*.hex
+*.srec
+*.mot
+
+# Bibliotecas estáticas
+*.a
+*.lib
+*.la
+*.lo
