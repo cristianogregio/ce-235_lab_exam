@@ -36,7 +36,7 @@ bool scheduler_is_running(void);
 
 void scheduler_register_task(uint8_t task_index, task_handler_t handler);
 void scheduler_set_task_status(uint8_t task_index, const char *status);
-void scheduler_add_tcomp(uint8_t task_index, uint32_t elapsed_ms);
+void scheduler_set_tcomp(uint8_t task_index, uint32_t elapsed_ms);
 
 const sched_task_info_t *scheduler_get_task_info(uint8_t task_index);
 uint8_t scheduler_get_task_count(void);

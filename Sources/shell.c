@@ -61,9 +61,9 @@ static void shell_show_task_states(void)
   uint8_t i;
   const sched_task_info_t *info;
 
-  PRINTF("%-9s | %-12s | %-2s | %-8s | %-7s | %6s\r\n",
-         "TASK NAME", "ENTRY POINT", "ID", "PRIORITY", "STATUS", "TCOMP");
-  PRINTF("----------|--------------|----|----------|---------|-------\r\n");
+  PRINTF("%-9s | %-12s | %-2s | %-8s | %-7s | %8s\r\n",
+         "TASK NAME", "ENTRY POINT", "ID", "PRIORITY", "STATUS", "TCOMP(ms)");
+  PRINTF("----------|--------------|----|----------|---------|---------\r\n");
 
   for (i = 0U; i < scheduler_get_task_count(); i++)
   {
@@ -73,7 +73,7 @@ static void shell_show_task_states(void)
       continue;
     }
 
-    PRINTF("%-9s | %-12s | %2u | %-8s | %-7s | %6u\r\n",
+    PRINTF("%-9s | %-12s | %2u | %-8s | %-7s | %8u\r\n",
            info->name,
            info->entry,
            (unsigned int)info->id,

@@ -151,10 +151,38 @@ static void scheduler_resume_periodic_tasks(void)
   }
 }
 
+static const char *scheduler_state_to_string(eTaskState state)
+{
+  switch (state)
+  {
+    case eRunning:   return "running";
+    case eReady:     return "ready";
+    case eBlocked:   return "blocked";
+    case eSuspended: return "suspended";
+    case eDeleted:   return "deleted";
+    default:         return "unknown";
+  }
+}
+
+static void scheduler_snapshot_task_states(void)
+{
+  uint8_t i;
+
+  for (i = 0U; i < SCHED_NUM_TASKS; i++)
+  {
+    if (s_tasks[i].handler != NULL)
+    {
+      scheduler_set_task_status(i, scheduler_state_to_string(eTaskGetState(s_tasks[i].handler)));
+    }
+  }
+}
+
 void scheduler_stop(void)
 {
   s_scheduler_running = false;
   scheduler_pit_enable(false);
+  OSA_TimeDelay(90U);
+  scheduler_snapshot_task_states();
   scheduler_suspend_periodic_tasks();
 }
 
@@ -188,11 +216,11 @@ void scheduler_set_task_status(uint8_t task_index, const char *status)
   }
 }
 
-void scheduler_add_tcomp(uint8_t task_index, uint32_t elapsed_ms)
+void scheduler_set_tcomp(uint8_t task_index, uint32_t elapsed_ms)
 {
   if (task_index < SCHED_NUM_TASKS)
   {
-    s_tasks[task_index].tcomp_ms += elapsed_ms;
+    s_tasks[task_index].tcomp_ms = elapsed_ms;
   }
 }
 
