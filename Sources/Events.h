@@ -46,6 +46,7 @@
 extern "C" {
 #endif 
 
+/* um semaforo por task periodica - ISR posta, task faz wait */
 extern semaphore_t task1Sem;
 extern semaphore_t task2Sem;
 extern semaphore_t task3Sem;

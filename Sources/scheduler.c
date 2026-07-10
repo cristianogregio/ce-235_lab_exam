@@ -6,6 +6,7 @@
 #include "task.h"
 #include <string.h>
 
+/* tick base do PIT: 20ms = menor periodo (task1) */
 #define SCHED_BASE_TICK_MS   20U
 #define SCHED_PIT_CHANNEL    0U
 
@@ -13,6 +14,7 @@ static volatile uint32_t s_tick_count = 0U;
 static volatile bool s_scheduler_running = false;
 static bool s_tasks_suspended = false;
 
+/* tabela que a shell usa no comando state */
 static sched_task_info_t s_tasks[SCHED_NUM_TASKS] =
 {
   { "task1", "Task1_task", 1U, SCHED_PRIO_HIGH,    "HIGH",    20U,   5U, NULL, "blocked", 0U },
@@ -22,6 +24,7 @@ static sched_task_info_t s_tasks[SCHED_NUM_TASKS] =
   { "task5", "Task5_task", 5U, SCHED_PRIO_LOWEST,  "LOWEST",  1000U, 80U, NULL, "blocked", 0U }
 };
 
+/* configura PIT pra disparar a cada 20ms (hardware timer do enunciado) */
 static void scheduler_pit_init(void)
 {
   uint32_t pit_freq;
@@ -33,7 +36,7 @@ static void scheduler_pit_init(void)
 
   if (load_value > 0U)
   {
-    load_value--;
+    load_value--;  /* PIT conta de LDVAL ate 0 */
   }
 
   PIT->MCR = 0U;
@@ -41,7 +44,7 @@ static void scheduler_pit_init(void)
   PIT->CHANNEL[SCHED_PIT_CHANNEL].TCTRL = PIT_TCTRL_TIE(1U);
   PIT->CHANNEL[SCHED_PIT_CHANNEL].TFLG = PIT_TFLG_TIF(1U);
 
-  NVIC_SetPriority(PIT_IRQn, 3U);
+  NVIC_SetPriority(PIT_IRQn, 3U);  /* prioridade baixa = pode chamar OSA na ISR */
   INT_SYS_EnableIRQ(PIT_IRQn);
 }
 
@@ -58,22 +61,24 @@ static void scheduler_pit_enable(bool enable)
   }
 }
 
+/* libera semaforo so quando o tick bate o periodo da task */
 static void scheduler_post_if_due(uint8_t task_index, uint32_t period_ticks)
 {
   if ((s_tick_count % period_ticks) == 0U)
   {
-  switch (task_index)
-  {
-    case 0U: (void)OSA_SemaPost(&task1Sem); break;
-    case 1U: (void)OSA_SemaPost(&task2Sem); break;
-    case 2U: (void)OSA_SemaPost(&task3Sem); break;
-    case 3U: (void)OSA_SemaPost(&task4Sem); break;
-    case 4U: (void)OSA_SemaPost(&task5Sem); break;
-    default: break;
-  }
+    switch (task_index)
+    {
+      case 0U: (void)OSA_SemaPost(&task1Sem); break;  /* T1=20ms  -> todo tick   */
+      case 1U: (void)OSA_SemaPost(&task2Sem); break;  /* T2=40ms  -> a cada 2    */
+      case 2U: (void)OSA_SemaPost(&task3Sem); break;  /* T3=100ms -> a cada 5    */
+      case 3U: (void)OSA_SemaPost(&task4Sem); break;  /* T4=500ms -> a cada 25   */
+      case 4U: (void)OSA_SemaPost(&task5Sem); break;  /* T5=1000ms-> a cada 50   */
+      default: break;
+    }
   }
 }
 
+/* ISR do PIT - coracao do scheduler periodico */
 void PIT_IRQHandler(void)
 {
   if ((PIT->CHANNEL[SCHED_PIT_CHANNEL].TFLG & PIT_TFLG_TIF_MASK) != 0U)
@@ -92,6 +97,7 @@ void PIT_IRQHandler(void)
   }
 }
 
+/* semaforos + timer - roda antes do RTOS subir */
 void scheduler_init(void)
 {
   (void)OSA_SemaCreate(&task1Sem, 0U);
@@ -110,6 +116,7 @@ void scheduler_start(void)
   scheduler_pit_enable(true);
 }
 
+/* qualquer task periodica pode ligar o PIT na 1a vez */
 void scheduler_ensure_started(void)
 {
   if (!s_scheduler_running)
@@ -118,6 +125,7 @@ void scheduler_ensure_started(void)
   }
 }
 
+/* congela tasks pra tabela nao mudar entre stop e state */
 static void scheduler_suspend_periodic_tasks(void)
 {
   uint8_t i;
@@ -151,6 +159,7 @@ static void scheduler_resume_periodic_tasks(void)
   }
 }
 
+/* traduz enum feio do FreeRTOS pra string da tabela */
 static const char *scheduler_state_to_string(eTaskState state)
 {
   switch (state)
@@ -164,6 +173,7 @@ static const char *scheduler_state_to_string(eTaskState state)
   }
 }
 
+/* le estado REAL do RTOS no instante do stop */
 static void scheduler_snapshot_task_states(void)
 {
   uint8_t i;
@@ -177,12 +187,16 @@ static void scheduler_snapshot_task_states(void)
   }
 }
 
+/* comando stop da shell: para PIT, espera WCET, salva status, suspende */
 void scheduler_stop(void)
 {
   s_scheduler_running = false;
   scheduler_pit_enable(false);
+
+  /* da tempo da task5 terminar (WCET max = 80ms) */
   OSA_TimeDelay(90U);
-  scheduler_snapshot_task_states();
+
+  scheduler_snapshot_task_states();  /* aqui deve dar blocked em todas */
   scheduler_suspend_periodic_tasks();
 }
 
@@ -198,6 +212,7 @@ bool scheduler_is_running(void)
   return s_scheduler_running;
 }
 
+/* task se registra na 1a execucao e ganha prioridade certa */
 void scheduler_register_task(uint8_t task_index, task_handler_t handler)
 {
   if (task_index < SCHED_NUM_TASKS)
@@ -216,6 +231,7 @@ void scheduler_set_task_status(uint8_t task_index, const char *status)
   }
 }
 
+/* TCOMP = ultima execucao (nao acumula!) */
 void scheduler_set_tcomp(uint8_t task_index, uint32_t elapsed_ms)
 {
   if (task_index < SCHED_NUM_TASKS)

@@ -7,12 +7,14 @@
 
 #define SCHED_NUM_TASKS 5U
 
+/* menor numero OSA = maior prioridade no FreeRTOS */
 #define SCHED_PRIO_HIGH     11U
 #define SCHED_PRIO_MEDIUM   12U
 #define SCHED_PRIO_REGULAR  13U
 #define SCHED_PRIO_LOW      14U
 #define SCHED_PRIO_LOWEST   15U
 
+/* dados de cada task pro comando state */
 typedef struct
 {
   const char *name;
