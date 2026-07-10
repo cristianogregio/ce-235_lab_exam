@@ -6,13 +6,12 @@
 
 #define SHELL_CMD_MAX_LEN 16U
 #define SHELL_STACK_SIZE  1024U
-#define SHELL_PRIORITY    25U  /* baixa! senao GETCHAR trava as tasks periodicas */
+#define SHELL_PRIORITY    25U  // baixa! senao GETCHAR trava as tasks periodicas. Pois o próprio shel estava interferindo nas prioridades.
 #define SHELL_PROMPT      "SCHED_CE235> "
 
 static OSA_TASK_DEFINE(Shell, SHELL_STACK_SIZE);
 static task_handler_t s_shell_handler;
 
-/* le comando com echo - ignora \n sozinho (PuTTY manda \r\n) */
 static void shell_read_command(char *cmd, uint8_t max_len)
 {
   uint8_t index = 0U;
@@ -28,7 +27,7 @@ static void shell_read_command(char *cmd, uint8_t max_len)
     {
       if ((index == 0U) && (ch == '\n'))
       {
-        continue;  /* evita linha em branco fantasma */
+        continue;  // evita linha em branco
       }
 
       PUTCHAR('\r');
@@ -57,7 +56,7 @@ static void shell_read_command(char *cmd, uint8_t max_len)
   cmd[index] = '\0';
 }
 
-/* imprime tabela alinhada - so funciona com scheduler parado */
+// imprime tabela alinhada - so funciona com scheduler parado
 static void shell_show_task_states(void)
 {
   uint8_t i;
@@ -85,7 +84,7 @@ static void shell_show_task_states(void)
   }
 }
 
-/* task da shell - roda o REPL no serial */
+
 static void shell_task(void *param)
 {
   char cmd[SHELL_CMD_MAX_LEN];
@@ -124,7 +123,7 @@ static void shell_task(void *param)
   }
 }
 
-/* cria task da shell antes do RTOS startar */
+// Incializa o shell que cria task antes do RTOS inicializar
 void shell_init(void)
 {
   if (OSA_TaskCreate((task_t)shell_task,
@@ -138,7 +137,7 @@ void shell_init(void)
   {
     for (;;)
     {
-      /* deu ruim - fica aqui pra debug */
+      /* Para não matar o processor caso dê ruim */
     }
   }
 }
