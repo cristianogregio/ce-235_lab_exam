@@ -83,6 +83,11 @@
     <GeneratedCs>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Cpu.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\DbgCs1.c</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task1.c</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task2.c</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task3.c</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task4.c</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task5.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\clockMan1.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\free_rtos.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\hardware_init.c</PathName>
@@ -119,6 +124,7 @@
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\SDK\rtos\FreeRTOS\src\timers.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Sources\Events.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Sources\main.c</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Sources\os_tasks.c</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Static_Code\System\PE_low_level_init.c</PathName>
     </GeneratedCs>
     <GeneratedHs>
@@ -127,6 +133,11 @@
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\PE_low_level_init.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\SDK\platform\devices\MKL25Z4\startup\system_MKL25Z4.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\SDK\rtos\FreeRTOS\config\FreeRTOSConfig.h</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task1.h</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task2.h</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task3.h</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task4.h</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\Task5.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\board.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\clockMan1.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Generated_Code\free_rtos.h</PathName>
@@ -176,6 +187,7 @@
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\SDK\rtos\FreeRTOS\port\gcc\portTicks.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\SDK\rtos\FreeRTOS\port\gcc\portmacro.h</PathName>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Sources\Events.h</PathName>
+      <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\Sources\os_tasks.h</PathName>
     </GeneratedHs>
     <GeneratedASMs>
       <PathName>C:\Users\ALIENWARE-CRISTIANOG\OneDrive - Modirum Gespi\ce-235_workspace\lab_exam\SDK\platform\devices\MKL25Z4\startup\gcc\startup_MKL25Z4.S</PathName>

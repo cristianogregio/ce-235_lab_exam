@@ -36,11 +36,21 @@
 #include "osa1.h"
 #include "free_rtos.h"
 #include "DbgCs1.h"
+#include "Task1.h"
+#include "Task2.h"
+#include "Task3.h"
+#include "Task4.h"
+#include "Task5.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif 
 
+extern semaphore_t task1Sem;
+extern semaphore_t task2Sem;
+extern semaphore_t task3Sem;
+extern semaphore_t task4Sem;
+extern semaphore_t task5Sem;
 
 /* END Events */
 

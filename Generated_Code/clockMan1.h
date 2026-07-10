@@ -7,7 +7,7 @@
 **     Version     : Component 1.2.0, Driver 01.00, CPU db: 3.00.000
 **     Repository  : KSDK 1.2.0
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2026-07-07, 23:38, # CodeGen: 0
+**     Date/Time   : 2026-07-10, 02:13, # CodeGen: 5
 **     Contents    :
 **         CLOCK_SYS_SetOutDiv1                  - static inline void CLOCK_SYS_SetOutDiv1(uint8_t outdiv1);
 **         CLOCK_SYS_GetOutDiv1                  - static inline uint8_t CLOCK_SYS_GetOutDiv1(void);

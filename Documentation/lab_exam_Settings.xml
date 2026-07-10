@@ -188,5 +188,70 @@
       <EmptySection_DummyValue />
     </Events>
   </Bean>
+  <Bean name="Task1" type="OS_Task">
+    <Enabled v="Y" />
+    <Properties>
+      <Name v="Task1" />
+      <Component_version v="1.2.0" />
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="Task2" type="OS_Task">
+    <Enabled v="Y" />
+    <Properties>
+      <Name v="Task2" />
+      <Component_version v="1.2.0" />
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="Task3" type="OS_Task">
+    <Enabled v="Y" />
+    <Properties>
+      <Name v="Task3" />
+      <Component_version v="1.2.0" />
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="Task4" type="OS_Task">
+    <Enabled v="Y" />
+    <Properties>
+      <Name v="Task4" />
+      <Component_version v="1.2.0" />
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
+  <Bean name="Task5" type="OS_Task">
+    <Enabled v="Y" />
+    <Properties>
+      <Name v="Task5" />
+      <Component_version v="1.2.0" />
+    </Properties>
+    <Methods>
+      <EmptySection_DummyValue />
+    </Methods>
+    <Events>
+      <EmptySection_DummyValue />
+    </Events>
+  </Bean>
 </PE_PROJECT_SETTINGS_DOCUMENTATION>
 

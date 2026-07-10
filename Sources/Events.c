@@ -29,6 +29,7 @@
 
 #include "Cpu.h"
 #include "Events.h"
+#include "os_tasks.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -36,6 +37,12 @@ extern "C" {
 
 
 /* User includes (#include below this line is not maintained by Processor Expert) */
+
+semaphore_t task1Sem;
+semaphore_t task2Sem;
+semaphore_t task3Sem;
+semaphore_t task4Sem;
+semaphore_t task5Sem;
 
 /* END Events */
 

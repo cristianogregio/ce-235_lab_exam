@@ -8,7 +8,7 @@
 **     Repository  : KSDK 1.2.0
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2026-07-07, 23:42, # CodeGen: 1
+**     Date/Time   : 2026-07-10, 02:48, # CodeGen: 8
 **     Abstract    :
 **
 **     Settings    :
@@ -67,6 +67,7 @@
 /* {Default RTOS Adapter} No RTOS includes */
 #include "Cpu.h"
 #include "Events.h"
+#include "os_tasks.h"
 
 
 #ifdef __cplusplus
@@ -113,6 +114,21 @@ void Components_Init(void)
   /* Debug console initialization */
   DbgConsole_Init(BOARD_DEBUG_UART_INSTANCE, DEBUG_UART_BAUD, DEBUG_UART_TYPE);
   /*! DbgCs1 Auto initialization end */
+  /*! Task1 Auto initialization start */ 
+  (void)Task1_Init();
+  /*! Task1 Auto initialization end */                       
+  /*! Task2 Auto initialization start */ 
+  (void)Task2_Init();
+  /*! Task2 Auto initialization end */                       
+  /*! Task3 Auto initialization start */ 
+  (void)Task3_Init();
+  /*! Task3 Auto initialization end */                       
+  /*! Task4 Auto initialization start */ 
+  (void)Task4_Init();
+  /*! Task4 Auto initialization end */                       
+  /*! Task5 Auto initialization start */ 
+  (void)Task5_Init();
+  /*! Task5 Auto initialization end */                       
 }
 #endif /* CPU_COMPONENTS_INIT */
 

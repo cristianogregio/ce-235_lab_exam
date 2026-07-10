@@ -120,8 +120,8 @@
 #define INCLUDE_xQueueGetMutexHolder             1
 #define INCLUDE_xTaskGetCurrentTaskHandle        0
 #define INCLUDE_xTaskGetIdleTaskHandle           0
-#define INCLUDE_eTaskGetState                    0
-#define INCLUDE_pcTaskGetTaskName                0
+#define INCLUDE_eTaskGetState                    1
+#define INCLUDE_pcTaskGetTaskName                1
 #define INCLUDE_xEventGroupSetBitFromISR         1
 #define INCLUDE_xTimerPendFunctionCall           1
 

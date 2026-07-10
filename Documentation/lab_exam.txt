@@ -209,6 +209,21 @@ Module "DbgCs1"    (component fsl_debug_console)
    - DbgCs1_debug_scanf -Reads formatted data from the standard input stream.
    - DbgCs1_debug_getchar -Reads a character from standard input.
 
+Module "Task1"     (component OS_Task)
+   - Task1_Init -Creates and starts a task.
+
+Module "Task2"     (component OS_Task)
+   - Task2_Init -Creates and starts a task.
+
+Module "Task3"     (component OS_Task)
+   - Task3_Init -Creates and starts a task.
+
+Module "Task4"     (component OS_Task)
+   - Task4_Init -Creates and starts a task.
+
+Module "Task5"     (component OS_Task)
+   - Task5_Init -Creates and starts a task.
+
 Module "Cpu"       (component MKL25Z128LK4_4SDK)
    - Cpu_SystemInit -This method configures the oscillator (PLL) that is part of the microcontroller device. SystemInit is 
                 called from startup_device file.
