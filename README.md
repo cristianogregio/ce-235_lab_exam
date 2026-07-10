@@ -1,4 +1,4 @@
-# lab_exam — CE-235 (FRDM-KL25Z)
+# Laboratório Final — CE-235 
 
 Scheduler periódico e shell serial (`SCHED_CE235>`).
 
