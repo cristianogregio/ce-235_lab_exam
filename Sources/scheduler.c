@@ -35,7 +35,7 @@ static void scheduler_pit_init(void) {
 	load_value = (pit_freq / 1000U) * SCHED_BASE_TICK_MS;
 
 	if (load_value > 0U) {
-		load_value--; // Interrup??o conta de LDVAL ate 0
+		load_value--; // Interrupcao conta de LDVAL ate 0
 	}
 
 	PIT->MCR = 0U;
@@ -82,7 +82,7 @@ static void scheduler_post_if_due(uint8_t task_index, uint32_t period_ticks) {
 	}
 }
 
-/* ISR do PIT */
+// Interrupção do ISR
 void PIT_IRQHandler(void) {
 	if ((PIT->CHANNEL[SCHED_PIT_CHANNEL].TFLG & PIT_TFLG_TIF_MASK) != 0U) {
 		PIT->CHANNEL[SCHED_PIT_CHANNEL].TFLG = PIT_TFLG_TIF(1U);
@@ -155,7 +155,7 @@ static void scheduler_resume_periodic_tasks(void) {
 	}
 }
 
-// Tradu??o do enum
+// Conversão do enum
 static const char *scheduler_state_to_string(eTaskState state) {
 	switch (state) {
 	case eRunning:
